@@ -59,7 +59,7 @@ Difficulty : Medium +
 */
 #include <stdlib.h>
 #include <stdio.h>
-
+int a[100], i = 0;
 struct node_dll{
 	int data;
 	struct node_dll *next;
@@ -71,6 +71,31 @@ struct node{
 	struct node *right;
 };
 
-int is_identical(struct node_dll *head, struct node *root){
+void inorderTree(struct node *root)
+{
+	if (!root) return;
+	inorderTree(root->left);
+	a[i++]=root->data;
+	inorderTree(root->right);
+
+}
+int is_identical(struct node_dll *head, struct node *root)
+{
+	int j = 0;
+	if (head==NULL || root==NULL)
 	return -1;
+	inorderTree(root);
+	for (j = 0; j < i; j++)
+	{
+		if (head == NULL)
+			break;
+		if (head->data != a[j])
+			return 0;
+		head = head->next;
+    }
+	if (j == i)
+		return 1;
+	else
+		return 0;
+
 }
