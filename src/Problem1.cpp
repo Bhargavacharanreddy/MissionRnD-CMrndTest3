@@ -71,7 +71,7 @@ int get_missing_value(struct node *root,int n)
 	return -1;
 	if (n < 0)
 		n = -(n);
-	inorder(root);
+	inorder(root);/*in this funtion i am calculating the sum of all elements*/
 	n = n*(n + 1) / 2;/*calculating the sum of n numbers*/
-	return (n - sum);
+	return (n - sum);/*by substracting we'll be getting the required missing number*/
 }
